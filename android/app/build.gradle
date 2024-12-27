@@ -1,0 +1,49 @@
+plugins {
+    id "com.android.application"
+    // START: FlutterFire Configuration
+    id 'com.google.gms.google-services'
+    // END: FlutterFire Configuration
+    id "kotlin-android"
+    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+android {
+    namespace "com.example.apkmasak" // Namespace untuk aplikasi Anda
+    compileSdkVersion 34
+    ndkVersion = flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        applicationId = "com.example.apkmasak" // ID aplikasi Anda
+        namespace "com.example.apkmasak"
+        minSdkVersion 21
+        targetSdkVersion 34
+        multiDexEnabled true
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+    }
+
+    dependencies{
+        implementation 'com.android.support:multidex:1.0.3'
+        implementation 'org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version'
+    }
+
+    buildTypes {
+        release {
+            signingConfig = signingConfigs.debug // Konfigurasi penandatanganan untuk rilis
+        }
+    }
+}
+
+flutter {
+    source = "../.."
+}
